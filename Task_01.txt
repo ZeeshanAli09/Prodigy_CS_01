@@ -1,0 +1,39 @@
+def encryption(s, key):
+    output = ""
+    for char in s:
+        a = ord(char) + key
+        if ('a' <= char <= 'z' or 'A' <= char <= 'Z'):
+            if (a > ord('z') and char <= 'z') or (a > ord('Z') and char <= 'Z'):
+                a -= 26
+        output += chr(a)
+    return output
+
+def decryption(s, key):
+    output = ""
+    for char in s:
+        a = ord(char) - key
+        if ('a' <= char <= 'z' or 'A' <= char <= 'Z'):
+            if (a < ord('a') and char >= 'a') or (a < ord('A') and char >= 'A'):
+                a += 26
+        output += chr(a)
+    return output
+
+def main():
+    choice = 'Y'
+    while choice == 'Y' or choice == 'y':
+        user_choice = int(input("1) Encryption\n2) Decryption\nEnter your choice: "))
+        input_text = input("Enter text: ")
+        key = int(input("Enter key: "))
+
+        if user_choice == 1:
+            print("Encrypted text:", encryption(input_text, key))
+        elif user_choice == 2:
+            print("Decrypted text:", decryption(input_text, key))
+        else:
+            print("Invalid Input!")
+
+        print("\nDo you want to encrypt or decrypt again? (Y/N): ", end="")
+        choice = input()
+
+if __name__ == "__main__":
+    main()
